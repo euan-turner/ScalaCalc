@@ -1,7 +1,9 @@
 package calculus
 
-sealed trait UnaryOp
-case object Neg extends UnaryOp
-case object Sin extends UnaryOp
-case object Cos extends UnaryOp
-case object Log extends UnaryOp
+import scala.math.{cos, log, sin}
+
+enum UnaryOp(val op: Double => Double, val str: String):
+  case Neg extends UnaryOp((x: Double) => -x, "-")
+  case Sin extends UnaryOp(sin, "sin")
+  case Cos extends UnaryOp(cos, "cos")
+  case Log extends UnaryOp(log, "log")
